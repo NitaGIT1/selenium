@@ -9,19 +9,17 @@ public class IsDisplayed {
 
 	public static void main(String[] args) throws InterruptedException {
 		WebDriver driver = new ChromeDriver();
-		driver.get("https://demo.guru99.com/test/facebook.html");
-		WebElement email = driver.findElement(By.id("email"));
-		email.sendKeys("Nita");
-
+		driver.get("https://www.letskodeit.com/practice");
 		Thread.sleep(2000);
-
-		WebElement pass = driver.findElement(By.id("pass"));
-		pass.sendKeys("1234");
+		WebElement element = driver.findElement(By.id("displayed-text"));
+		System.out.println("display status: " + element.isDisplayed());
+		driver.findElement(By.id("hide-textbox")).click();
 		Thread.sleep(2000);
-		driver.findElement(By.id("loginbutton")).submit();
-		Thread.sleep(5000);
-		//https://www.letskodeit.com/practice
-		
+		System.out.println("display status: " + element.isDisplayed());
+		driver.findElement(By.id("show-textbox")).click();
+		Thread.sleep(2000);
+		System.out.println("display status: " + element.isDisplayed());
+		driver.close();
 
 	}
 
