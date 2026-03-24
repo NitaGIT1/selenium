@@ -4,37 +4,38 @@ import java.io.FileInputStream;
 
 import java.io.IOException;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class ReadXlsFile {
+public class ReadXlsxFile {
 	public static void main(String[] args) throws IOException {
-		FileInputStream file = new FileInputStream("C:\\Users\\admin\\nita\\readfilenita1.xls");
 		
-		HSSFWorkbook workbook = new HSSFWorkbook(file);
+		FileInputStream file = new FileInputStream("C:\\Users\\admin\\nita\\readfilenita2.xlsx");
 		
-		HSSFSheet sheet = workbook.getSheetAt(0);
+		XSSFWorkbook workbook = new XSSFWorkbook(file);
+		
+		XSSFSheet sheet = workbook.getSheetAt(0);
 		
 		int totalRows = sheet.getLastRowNum();
 		
 		System.out.println("Total Rows: " + totalRows);
 		
 		for (int i = 0; i <= totalRows; i++) {
-			HSSFRow row = sheet.getRow(i);
+			XSSFRow row = sheet.getRow(i);
 			if (row != null) {
 				int totalCells = row.getLastCellNum();
 				for (int j = 0; j < totalCells; j++) {
-					HSSFCell cell = row.getCell(j);
+					XSSFCell cell = row.getCell(j);
 					if (cell != null) {
 						System.out.print(cell.toString() + " ");
-                     }
+
+					}
 				}
 				System.out.println();
 			}
 
 		}
-
-	}
+     } 
 }
